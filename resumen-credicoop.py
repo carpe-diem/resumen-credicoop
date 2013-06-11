@@ -4,8 +4,8 @@
 import getopt
 import sys
 
-from src.process import ParseCredicoop
-from src.constants import TITLE, TITLE_PREV, TITLE_LAST
+from credicoop.process import ParseCredicoop
+from credicoop.constants import TITLE, TITLE_PREV, TITLE_LAST
 
 
 HELP = """python credicoop.py -f <filename>"""

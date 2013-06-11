@@ -6,8 +6,8 @@ from pdfminer.pdfinterp import PDFResourceManager, process_pdf
 from pdfminer.converter import HTMLConverter
 from pdfminer.layout import LAParams
 
-from src.resume import Resumen, ResumenDetalle
-from src.constants import CODEC, TITLE, TITLE_PREV, TITLE_LAST
+from credicoop.resume import Resumen, ResumenDetalle
+from credicoop.constants import CODEC, TITLE, TITLE_PREV, TITLE_LAST
 
 
 class ParseCredicoop(object):
