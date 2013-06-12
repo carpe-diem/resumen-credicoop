@@ -8,8 +8,8 @@ La aplicación funciona desde consola y también como librería.
 
 Desde consola
 -------------
-```
-python resumen-credicoop.py -f resumen.pdf
+
+```PYTHON
 ~$ python resumen-credicoop.py -h
 usage: resumen-credicoop.py -f <filename> [--fazio]
 ```
@@ -19,7 +19,16 @@ Filename es el PDF que se descarga desde el home banking del banco Credicoop.
 La opción --fazio, es útil para las cooperativas que llevan la contabilidad con ... Carlos Fazio, ya que genera
 la planilla de cálculos que hay que pasarle.
 
+```PYTHON
+python resumen-credicoop.py -f resumen.pdf --fazio
+```
+
 Si no se pasa esta opción, el sistema solo imprime el resumen en pantalla.
+
+
+```PYTHON
+python resumen-credicoop.py -f resumen.pdf
+```
 
 
 Como librería
