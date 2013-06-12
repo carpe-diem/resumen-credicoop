@@ -44,7 +44,7 @@ Todo el resumen
 {
     'saldo':'xxxx.xx',
     'saldo_anterior':'xxxx.xx',
-    'fecha_saldo':'dd/mm/yy'
+    'fecha_saldo':'dd/mm/yy',
     'detalle':[
         {
             'fecha':u'dd/mm/yy',
