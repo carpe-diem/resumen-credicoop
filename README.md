@@ -1,9 +1,9 @@
 resumen-credicoop
 =================
 
-Aplicación para manipular la información del resumen del Banco credicoop.
+Aplicación para manipular la información del resumen del Banco Credicoop.
 
-La aplicación funciona desde consola y también como libreria.
+La aplicación funciona desde consola y también como librería.
 
 
 Desde consola
@@ -14,10 +14,10 @@ python resumen-credicoop.py -f resumen.pdf
 usage: resumen-credicoop.py -f <filename> [--fazio]
 ```
 
-Filename es el PDF que se descarga desde el home banking del banco credicoop.
+Filename es el PDF que se descarga desde el home banking del banco Credicoop.
 
-La opción --fazio, es util para las cooperativas que llevan la contabilidad con ... Carlos Fazio, ya que genera
-la planilla de calculos que hay que pasarle.
+La opción --fazio, es útil para las cooperativas que llevan la contabilidad con ... Carlos Fazio, ya que genera
+la planilla de cálculos que hay que pasarle.
 
 Si no se pasa esta opción, el sistema solo imprime el resumen en pantalla.
 
