@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
 import getopt
 import sys
 
@@ -8,34 +7,36 @@ from credicoop.process import ParseCredicoop
 from credicoop.constants import TITLE, TITLE_PREV, TITLE_LAST
 
 
-HELP = """python credicoop.py -f <filename>"""
-
-
 def main(argv):
-    filename = ''
+
+    def usage():
+        print ('usage: %s -f <filename> [--fazio]' % argv[0])
+        return 100
 
     try:
-        opts, args = getopt.getopt(argv,"h:f:",["filename="])
-
+        (opts, args) = getopt.getopt(argv[1:], 'f:', 'fazio')
     except getopt.GetoptError:
-        print HELP
-        sys.exit(2)
+        return usage()
 
     for opt, arg in opts:
         if opt == '-h':
-            print HELP
-            sys.exit()
-        elif opt in ("-f", "--file"):
+            return usage()
+        if opt == ("-f"):
             filename = arg
+        if opt == ("--fazio"):
+            fazio = True
+        else:
+            fazio = False
 
-    if not filename:
-        print HELP
+    try:
+        credicoop = ParseCredicoop(filename)
+        obj = credicoop.create()
 
-    else:
-        try:
-            credicoop = ParseCredicoop(filename)
-            obj = credicoop.create()
+        if fazio:
+            from credicoop.export import ResumeXLS
+            book = ResumeXLS(obj)
 
+        else:
             print u"{0}{1}\n".format(
                 TITLE_PREV.rjust(20), obj.saldo_anterior.rjust(30))
 
@@ -60,10 +61,12 @@ def main(argv):
             print u"\n{0}{1}{2}".format(TITLE_LAST.rjust(20), obj.fecha_saldo.rjust(10),
                     obj.saldo.rjust(20))
 
-        except Exception, e:
-            print e
+
+    except Exception, e:
+        print e
 
 
 if __name__ == "__main__":
-   main(sys.argv[1:])
+    sys.exit(main(sys.argv))
+
 

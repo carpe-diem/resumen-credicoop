@@ -9,10 +9,10 @@ class Resumen(object):
     items = []
 
     def __repr__(self):
-        return "Resumen al {fecha}".format(fecha=self.fecha_saldo)
+        return u"Resumen al {fecha}".format(fecha=self.fecha_saldo)
 
     def __str__(self):
-        return "Resumen()"
+        return u"Resumen()"
 
     def to_dict(self):
         resumen_dict = {}

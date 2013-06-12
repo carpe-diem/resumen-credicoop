@@ -74,8 +74,8 @@ class ParseCredicoop(object):
                 detalle.fecha = line[0:8]
                 detalle.comprobante = line[9:21].strip()
                 detalle.descripcion = line[21:50].strip()
-                detalle.debito = line[50:64].strip()
-                detalle.credito = line[64:98].strip()
+                detalle.debito = line[50:64].strip().replace('.', '').replace(',', '.')
+                detalle.credito = line[64:98].strip().replace('.', '').replace(',', '.')
                 detalle.saldo = line[85:].strip()
 
                 resumen.items.append(detalle)
