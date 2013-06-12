@@ -42,7 +42,6 @@ Todo el resumen
 
 ```JSON
 {
-
     'saldo':'xxxx.xx',
     'saldo_anterior':'xxxx.xx',
     'fecha_saldo':'dd/mm/yy'
@@ -63,8 +62,7 @@ Todo el resumen
             'descripcion':u'descripcion',
             'debito':u'xxx'
         }
-        ],
-    },
+    ]
 }
 ```
 
