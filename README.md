@@ -64,8 +64,8 @@ Todo el resumen
             'debito':u'xxx'
         }
         ],
-    }
-
+    },
+}
 ```
 
 Obtener la información
