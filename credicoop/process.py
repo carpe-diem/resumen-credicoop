@@ -17,6 +17,8 @@
 # For further info, check  https://github.com/carpe-diem/resumen-credicoop/
 
 from cStringIO import StringIO
+import re
+
 from lxml import etree
 
 from pdfminer.pdfinterp import PDFResourceManager, process_pdf
@@ -34,9 +36,10 @@ class ParseCredicoop(object):
         self.content = self.get_content()
 
     def get_content(self):
+
         doc = self.convert_pdf()
         tree = etree.HTML(doc)
-        content = tree.xpath("/html/body/div[6]//text()")
+        content = tree.xpath("/html/body//span/text()")
 
         new_line = []
         for x in content:
@@ -55,6 +58,7 @@ class ParseCredicoop(object):
         device = HTMLConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
 
         fp = file(self.filename, 'rb')
+
         process_pdf(rsrcmgr, device, fp)
         fp.close()
         device.close()
@@ -65,12 +69,13 @@ class ParseCredicoop(object):
 
 
     def create(self):
+
         resumen = Resumen()
 
         for line in self.content:
 
             if all([x in TITLE for x in line.split()]):
-                continue
+                flag = True
 
             if TITLE_PREV in line:
                 saldo_anterior = line.strip().strip(TITLE_PREV)
@@ -85,7 +90,7 @@ class ParseCredicoop(object):
                 resumen.saldo = saldo
                 resumen.fecha_saldo = fecha
 
-            else:
+            elif re.search(r'(^\d+/\d+/\d+)', line) and not resumen.fecha_saldo:
                 detalle = ResumenDetalle()
 
                 detalle.fecha = line[0:8]

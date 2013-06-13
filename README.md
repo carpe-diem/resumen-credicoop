@@ -13,6 +13,15 @@ Instalación
 ~$ pip install resumen-credicoop
 ```
 
+Nota:
+~~~~
+En ubuntu/debian quizas necesiten instalar otros paquetes por lxml.
+
+```
+sudo apt-get install libxml2-dev
+sudo apt-get install libxslt1-dev
+```
+
 Desde consola
 -------------
 
