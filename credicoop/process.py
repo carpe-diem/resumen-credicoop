@@ -73,21 +73,18 @@ class ParseCredicoop(object):
         resumen = Resumen()
 
         for line in self.content:
+            line = line
 
-            if all([x in TITLE for x in line.split()]):
-                flag = True
+            #if all([x in TITLE for x in line.split()]):
+            #    flag = True
 
             if TITLE_PREV in line:
                 saldo_anterior = line.strip().strip(TITLE_PREV)
-                saldo_anterior = saldo_anterior.replace('.', '')
-                saldo_anterior = saldo_anterior.replace(',', '.')
-                resumen.saldo_anterior = saldo_anterior
+                resumen.saldo_anterior = self._format_money(saldo_anterior)
 
             elif TITLE_LAST in line:
                 fecha, saldo = line.strip().strip(TITLE_LAST).split()
-                saldo = saldo.replace('.', '')
-                saldo = saldo.replace(',', '.')
-                resumen.saldo = saldo
+                resumen.saldo = self._format_money(saldo)
                 resumen.fecha_saldo = fecha
 
             elif re.search(r'(^\d+/\d+/\d+)', line) and not resumen.fecha_saldo:
@@ -96,11 +93,22 @@ class ParseCredicoop(object):
                 detalle.fecha = line[0:8]
                 detalle.comprobante = line[9:21].strip()
                 detalle.descripcion = line[21:50].strip()
-                detalle.debito = line[50:64].strip().replace('.', '').replace(',', '.')
-                detalle.credito = line[64:98].strip().replace('.', '').replace(',', '.')
-                detalle.saldo = line[85:].strip()
+                detalle.debito = self._format_money(line[50:65])
+                detalle.credito = self._format_money(line[65:98])
+                detalle.saldo = self._format_money(line[85:])
 
                 resumen.items.append(detalle)
 
         return resumen
+
+    def _format_money(self, data):
+        data = data.strip()
+        data = data.replace('.', '')
+        data = data.replace(',', '.')
+        data = data.encode('utf-8')
+
+        if '−' in data or '-' in data:
+            data = '-' + data.replace('−', '')
+
+        return data
 
