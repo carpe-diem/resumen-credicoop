@@ -26,8 +26,8 @@ Desde consola
 -------------
 
 ```
-~$ resumen-credicoop.py -h
-usage: resumen-credicoop.py -f <filename> [--fazio]
+~$ resumen-credicoop -h
+usage: resumen-credicoop -f <filename> [--fazio]
 ```
 
 Filename es el PDF que se descarga desde el home banking del banco Credicoop.
@@ -36,14 +36,14 @@ La opción --fazio, es útil para las cooperativas que llevan la contabilidad co
 la planilla de cálculos que hay que pasarle.
 
 ```
-~$ resumen-credicoop.py -f resumen.pdf --fazio
+~$ resumen-credicoop -f resumen.pdf --fazio
 ```
 
 Si no se pasa esta opción, el sistema solo imprime el resumen en pantalla.
 
 
 ```
-~$ resumen-credicoop.py -f resumen.pdf
+~$ resumen-credicoop -f resumen.pdf
 ```
 
 
