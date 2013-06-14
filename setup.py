@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='resumen-credicoop',
-    version='0.0.2',
+    version='0.0.3',
     author='Alberto Paparelli (a.k.a. carpediem)',
     author_email='alberto@paparelli.com.ar',
     packages=['credicoop'],
