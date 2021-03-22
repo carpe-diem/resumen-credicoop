@@ -12,7 +12,7 @@ setup(
     description='Resumen banco Credicoop.',
     long_description="Resumen banco credicoop",
     install_requires=[
-        "lxml==3.2.1",
+        "lxml==4.6.3",
         "pdfminer==20110515",
     ],
 )
